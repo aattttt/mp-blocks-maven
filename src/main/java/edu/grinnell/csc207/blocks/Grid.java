@@ -63,7 +63,7 @@ public class Grid implements AsciiBlock {
    *   If the row is invalid.
    */
   public String row(int i) throws Exception {
-    return gridElement.repeat(horizRepetitions); // STUB
+    return element.row(i).repeat(hreps);
   } // row(int)
 
   /**
@@ -72,7 +72,7 @@ public class Grid implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return gridElement.height * vertRepetitions;
+    return element.height() * vreps;
   } // height()
 
   /**
@@ -81,7 +81,7 @@ public class Grid implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return gridElement.width * horizRepetitions;
+    return element.width() * hreps;
   } // width()
 
   /**
