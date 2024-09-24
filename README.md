@@ -6,7 +6,7 @@ Explorations with the creation, composition, and mutation of blocks of ASCII tex
 
 * Samuel A. Rebelsky (starter code).
 * Your Name Here
-* Your name Here
+* Your A.J. Trimble
 
 **Notes for the reader**
 
