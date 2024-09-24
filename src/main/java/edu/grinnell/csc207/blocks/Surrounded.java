@@ -55,7 +55,7 @@ public class Surrounded implements AsciiBlock {
    */
   public String row(int i) throws Exception {
     if (i == 0 || i == height() - 1) {
-      return surroundChar.repeat(width() + 2);
+      return surroundChar.repeat(width());
       } else {
         return surroundChar + contents.row(i - 1) + surroundChar;
       }
