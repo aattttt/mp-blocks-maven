@@ -80,9 +80,24 @@ public class HComp implements AsciiBlock {
         return " ".repeat(blocks[0].width()) + blocks[1].row(i);
       }
     } else if (align.equals(VAlignment.CENTER)) {
-      if () {
+      if (blocks[0].height() == blocks[1].height()) { // both equal
+        return blocks[0].row(i) + blocks[1].row(i);
 
+      } else if (blocks[0].height() > blocks[1].height()) { // left taller
+        int diff = blocks[0].height() - blocks[1].height();
+        int topSpace = diff/2;
+        //int bottomSpace = diff/2 + diff % 2;
+        if (i < topSpace ) {
+          return blocks[0].row(i) + " ".repeat(blocks[1].width());
+        } else if (i < blocks[1].height() + topSpace) {
+          return blocks[0].row(i) + blocks[1].row(i - topSpace);;
+        } else if (i > blocks[1].height() + topSpace) {
+          return blocks[0].row(i) + " ".repeat(blocks[1].width());
+        }
+      } else if (blocks[0].height() < blocks[1].height()) { // right taller
+        
       }
+
     }
 
     return "";  // STUB
