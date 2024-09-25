@@ -71,6 +71,20 @@ public class HComp implements AsciiBlock {
    *   if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
+    if (align.equals(VAlignment.TOP)) {
+      if (i < blocks[0].height() && i < blocks[1].height() ) {
+        return blocks[0].row(i) + blocks[1].row(i);
+      } else if (i < blocks[0].height()) {
+        return blocks[0].row(i) + " ".repeat(blocks[1].width());
+      } else if (i < blocks[1].height()) {
+        return " ".repeat(blocks[0].width()) + blocks[1].row(i);
+      }
+    } else if (align.equals(VAlignment.CENTER)) {
+      if () {
+
+      }
+    }
+
     return "";  // STUB
   } // row(int)
 
