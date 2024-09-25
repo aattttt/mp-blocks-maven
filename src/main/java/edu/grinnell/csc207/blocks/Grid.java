@@ -63,10 +63,10 @@ public class Grid implements AsciiBlock {
    *   If the row is invalid.
    */
   public String row(int i) throws Exception {
-    if (!(i >= 0 && i < element.height())) {
+    if (!(i >= 0 && i < this.height())) {
       throw new Exception("Out of Range");
     }
-    return element.row(i).repeat(hreps);
+    return element.row(i % element.height()).repeat(hreps);
   } // row(int)
 
   /**
