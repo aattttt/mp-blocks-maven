@@ -90,7 +90,7 @@ public class HComp implements AsciiBlock {
         if (i < topSpace ) {
           return blocks[0].row(i) + " ".repeat(blocks[1].width());
         } else if (i < blocks[1].height() + topSpace) {
-          return blocks[0].row(i) + blocks[1].row(i - topSpace);;
+          return blocks[0].row(i) + blocks[1].row(i - topSpace);
         } else if (i > blocks[1].height() + topSpace) {
           return blocks[0].row(i) + " ".repeat(blocks[1].width());
         }
@@ -109,7 +109,13 @@ public class HComp implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return 0;   // STUB
+    int max = 0;
+    for (int i = 0; i < blocks.length; i++) {
+      if (max < blocks[i].height()){
+        max = blocks[i].height();
+      }
+    }
+    return max;
   } // height()
 
   /**
@@ -118,7 +124,11 @@ public class HComp implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return 0;   // STUB
+    int sum = 0;
+    for (int i = 0; i < blocks.length; i++) {
+      sum += blocks[i].width();
+    }
+    return sum;   // STUB
   } // width()
 
   /**
