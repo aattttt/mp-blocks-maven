@@ -63,6 +63,9 @@ public class Grid implements AsciiBlock {
    *   If the row is invalid.
    */
   public String row(int i) throws Exception {
+    if (!(i >= 0 && i < element.height())) {
+      throw new Exception("Out of Range");
+    }
     return element.row(i).repeat(hreps);
   } // row(int)
 
@@ -81,7 +84,7 @@ public class Grid implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return element.width() * hreps;
+    return element.width()  * hreps;
   } // width()
 
   /**
