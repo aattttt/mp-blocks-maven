@@ -71,12 +71,14 @@ public class HComp implements AsciiBlock {
    *                      if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
+    String currStr = "";
+
     if (align.equals(VAlignment.TOP)) { // top allign
       for (int x = 0; x < blocks.length; x++) {
         if (blocks[x].height() < i) {
-          return " ".repeat(blocks[x].width());
+          currStr = currStr + " ".repeat(blocks[x].width());
         } else {
-          return blocks[x].row(i);
+          currStr = currStr + blocks[x].row(i);
         } // end ifelse
       } // end of for loop
 
@@ -85,11 +87,11 @@ public class HComp implements AsciiBlock {
       for (int x = 0; x < blocks.length; x++) {
         int topSpace = (height() - blocks[x].height()) / 2;
         if (topSpace > i) {
-          return " ".repeat(blocks[x].width());
+          currStr = currStr + " ".repeat(blocks[x].width());
         } else if (i < blocks[x].height() + topSpace) {
-          return blocks[x].row(i - topSpace);
+          currStr = currStr + blocks[x].row(i - topSpace);
         } else {
-          return " ".repeat(blocks[x].width());
+          currStr = currStr + " ".repeat(blocks[x].width());
         } // end of else if
       } // end of forloop
 
@@ -97,15 +99,16 @@ public class HComp implements AsciiBlock {
       for (int x = 0; x < blocks.length; x++) {
         int topSpace = height() - blocks[x].height();
         if (topSpace > i) {
-          return " ".repeat(blocks[x].width());
+          currStr = currStr + " ".repeat(blocks[x].width());
         } else {
-          return blocks[x].row(i - topSpace);
+          currStr = currStr + blocks[x].row(i - topSpace);
         }
       }
     } else {
       String str = "error";
       return str;
     }
+    return currStr;
   }
 
   /**
