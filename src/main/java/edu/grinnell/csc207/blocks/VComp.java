@@ -72,6 +72,10 @@ public class VComp implements AsciiBlock {
    *   if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
+    if (align.equals(HAlignment.LEFT)) {
+      
+    }
+
     return "";  // STUB
   } // row(int)
 
@@ -81,7 +85,11 @@ public class VComp implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return 0;   // STUB
+    int sum = 0;
+    for (int i = 0; i < blocks.length; i++) {
+      sum += blocks[i].height();
+    }
+    return sum;
   } // height()
 
   /**
@@ -90,7 +98,13 @@ public class VComp implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return 0;   // STUB
+    int max = 0;
+    for (int i = 0; i < blocks.length; i++) {
+      if (max < blocks[i].width()) {
+        max = blocks[i].width();
+      }
+    }
+    return max;
   } // width()
 
   /**
