@@ -90,12 +90,22 @@ public class VComp implements AsciiBlock {
       int blockIndex = 0;
       int sumHeight = 0;
       while (i > sumHeight){
-        sumHeight += blocks[blockIndex].height();
-        blockIndex ++;
+        if (blocks[blockIndex].width() == 0) {
+          blockIndex ++;
+        } else {
+          sumHeight += blocks[blockIndex].height();
+          blockIndex ++;
+        }
       } // end while
       if (i - sumHeight == 0){
+        if (blocks[blockIndex].width() == 0) {
+          return "";
+        }
         return " ".repeat(width() - blocks[blockIndex].width()) + blocks[blockIndex].row(i - (sumHeight));
       } else {
+        if (blocks[blockIndex -1].width() == 0) {
+          return "";
+        }
         return " ".repeat(width() - blocks[blockIndex -1].width()) + blocks[blockIndex -1].row((sumHeight) - i);
       } // end if else
 
@@ -113,7 +123,6 @@ public class VComp implements AsciiBlock {
         int diff = (width() - blocks[blockIndex - 1].width()) / 2;
         return " ".repeat(diff) + blocks[blockIndex -1].row((sumHeight) - i) + " ".repeat(width() - diff - blocks[blockIndex - 1].width());
       }
-
     } // end VA checks
 
     return "";  // STUB
