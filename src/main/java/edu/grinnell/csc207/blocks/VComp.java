@@ -73,22 +73,46 @@ public class VComp implements AsciiBlock {
    */
   public String row(int i) throws Exception {
     if (align.equals(HAlignment.LEFT)) {
-      int curSum = 0; //3
-      int blockIndex = 0; //2
-      while (curSum < i) {
-        curSum += blocks[blockIndex].height();
-        if (i - curSum < blocks[blockIndex].height()) {
-          return blocks[blockIndex].row(i - curSum) + " ".repeat(width() - blocks[blockIndex].width());
-        } else {
-          blockIndex ++;
-        }
-      }
+      int blockIndex = 0;
+      int sumHeight = 0;
+      while (i > sumHeight){
+        sumHeight += blocks[blockIndex].height();
+        blockIndex ++;
+      } // end while
+      if (i - sumHeight == 0){
+        return blocks[blockIndex].row(i - (sumHeight)) + " ".repeat(width() - blocks[blockIndex].width());
+      } else {
+        return blocks[blockIndex -1].row((sumHeight) - i) + " ".repeat(width() - blocks[blockIndex -1].width());
+      } // end if else
 
-      return blocks[blockIndex].row(i - curSum) + " ".repeat(width() - blocks[blockIndex].width());
     
     } else if (align.equals(HAlignment.RIGHT)) {
+      int blockIndex = 0;
+      int sumHeight = 0;
+      while (i > sumHeight){
+        sumHeight += blocks[blockIndex].height();
+        blockIndex ++;
+      } // end while
+      if (i - sumHeight == 0){
+        return " ".repeat(width() - blocks[blockIndex].width()) + blocks[blockIndex].row(i - (sumHeight));
+      } else {
+        return " ".repeat(width() - blocks[blockIndex -1].width()) + blocks[blockIndex -1].row((sumHeight) - i);
+      } // end if else
 
     } else if (align.equals(HAlignment.CENTER)) {
+      int blockIndex = 0;
+      int sumHeight = 0;
+      while (i > sumHeight){
+        sumHeight += blocks[blockIndex].height();
+        blockIndex ++;
+      } // end while
+      if (i - sumHeight == 0){
+        int diff = (width() - blocks[blockIndex].width()) / 2;
+        return " ".repeat(diff) + blocks[blockIndex].row(i - (sumHeight)) + " ".repeat(width() - diff - blocks[blockIndex].width());
+      } else {
+        int diff = (width() - blocks[blockIndex - 1].width()) / 2;
+        return " ".repeat(diff) + blocks[blockIndex -1].row((sumHeight) - i) + " ".repeat(width() - diff - blocks[blockIndex - 1].width());
+      }
 
     } // end VA checks
 
