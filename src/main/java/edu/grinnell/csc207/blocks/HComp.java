@@ -75,7 +75,7 @@ public class HComp implements AsciiBlock {
 
     if (align.equals(VAlignment.TOP)) { // top allign
       for (int x = 0; x < blocks.length; x++) {
-        if (i > blocks[x].height()) {
+        if (i > blocks[x].height() - 1) {
           currStr = currStr + " ".repeat(blocks[x].width());
         } else {
           currStr = currStr + blocks[x].row(i);
