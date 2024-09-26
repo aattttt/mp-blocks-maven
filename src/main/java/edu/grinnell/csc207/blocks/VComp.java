@@ -73,8 +73,19 @@ public class VComp implements AsciiBlock {
    */
   public String row(int i) throws Exception {
     if (align.equals(HAlignment.LEFT)) {
-      
-    }
+        int sumHeight= 0;
+        int index = 0;
+        while (i > sumHeight - 1) {
+          sumHeight += blocks[index].height();
+          index ++;
+        } 
+        int diff = width() - blocks[index].width(); 
+        return blocks[index].row(i - sumHeight) + " ".repeat(diff);     
+    } else if (align.equals(HAlignment.RIGHT)) {
+
+    } else if (align.equals(HAlignment.CENTER)) {
+
+    } // end VA checks
 
     return "";  // STUB
   } // row(int)
