@@ -75,11 +75,12 @@ public class HComp implements AsciiBlock {
 
     if (align.equals(VAlignment.TOP)) { // top allign
       for (int x = 0; x < blocks.length; x++) {
-        if (blocks[x].height() < i) {
+        if (i > blocks[x].height()) {
           currStr = currStr + " ".repeat(blocks[x].width());
         } else {
           currStr = currStr + blocks[x].row(i);
-        } // end ifelse
+        }
+
       } // end of for loop
 
     } else if (align.equals(VAlignment.CENTER)) {
