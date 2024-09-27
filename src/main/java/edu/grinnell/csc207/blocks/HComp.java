@@ -137,7 +137,7 @@ public class HComp implements AsciiBlock {
     for (int i = 0; i < blocks.length; i++) {
       sum += blocks[i].width();
     }
-    return sum; // STUB
+    return sum;
   } // width()
 
   /**
