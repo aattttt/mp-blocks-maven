@@ -44,8 +44,16 @@ public class HFlip implements AsciiBlock {
    * @exception Exception
    *   If the row is invalid.
    */
-  public String row(int i) {
-    //String[] words = block.split(" ");
+  public String row(int i) throws Exception {
+    if (i < 0 || i  > block.height() + 1) {
+     throw new Exception("Invalid value of i");  
+    } else {
+      char[] flipped = new char[block.row(i).length()];
+      for (int x = 0; x < block.row(i).length(); x++) {
+        flipped[x] = block.row(i).charAt((block.row(i).length() - x - 1));  
+      } // end for
+      return new String(flipped);
+    } // end if else
   } // row(int)
 
   /**
