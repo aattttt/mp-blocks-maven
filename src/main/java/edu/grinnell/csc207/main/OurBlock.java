@@ -2,6 +2,7 @@ package edu.grinnell.csc207.main;
 
 import edu.grinnell.csc207.blocks.AsciiBlock;
 import edu.grinnell.csc207.blocks.Boxed;
+import edu.grinnell.csc207.blocks.HFlip;
 import edu.grinnell.csc207.blocks.Line;
 import edu.grinnell.csc207.blocks.Rect;
 
@@ -79,16 +80,20 @@ public class OurBlock implements AsciiBlock{
     return block.width() + "{]A.J.~|".length() + "|~Luis[}".length();
   } // width()
 
+  public boolean eqv(AsciiBlock other) {
+    return ((other instanceof OurBlock) && (this.eqv((OurBlock) other)));
+  } // eqv(AsciiBlock)
+
   /**
    * Determine if another block is structurally equivalent to this block.
    *
    * @param other
-   *   The block to compare to this block.
+   *              The block to compare to this block.
    *
    * @return true if the two blocks are structurally equivalent and
-   *    false otherwise.
+   *         false otherwise.
    */
-  public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
-  } // eqv(AsciiBlock)
+  public boolean eqv(OurBlock other) {
+    return (this.block == other.block);
+  }  // eqv(AsciiBlock)
 } // class OurBlocks

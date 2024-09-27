@@ -80,6 +80,6 @@ public class VFlip implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return this.VFlip() == other.VFlip();       // STUB
   } // eqv(AsciiBlock)
 } // class VFlip
