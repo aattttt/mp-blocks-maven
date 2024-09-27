@@ -90,6 +90,19 @@ public class Surrounded implements AsciiBlock {
    *         false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false; // STUB
+    return ((other instanceof Surrounded) && (this.eqv((Surrounded) other)));
+  } 
+
+  /**
+   * Determine if another block is structurally equivalent to this block.
+   *
+   * @param other
+   *              The block to compare to this block.
+   *
+   * @return true if the two blocks are structurally equivalent and
+   *         false otherwise.
+   */
+  public boolean eqv(Surrounded other) {
+    return this.surroundChar.equals(other.surroundChar) && this.contents.eqv(other.contents);
   } // eqv(AsciiBlock)
 } // class Surrounded

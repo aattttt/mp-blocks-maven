@@ -88,10 +88,18 @@ public class Rect implements AsciiBlock {
     return this.row.length();
   } // width()
 
-
+  /**
+   * Determine if another block is structurally equivalent to this block.
+   *
+   * @param other
+   *              The block to compare to this block.
+   *
+   * @return true if the two blocks are structurally equivalent and
+   *         false otherwise.
+   */
   public boolean eqv(AsciiBlock other) {
     return ((other instanceof Rect) && (this.eqv((Rect) other)));
-  } 
+  }
   /**
    * Determine if another block is structurally equivalent to this block.
    *

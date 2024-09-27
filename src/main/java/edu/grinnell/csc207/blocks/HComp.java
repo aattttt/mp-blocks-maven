@@ -6,7 +6,8 @@ import java.util.Arrays;
  * The horizontal composition of blocks.
  *
  * @author Samuel A. Rebelsky
- * @author Your Name Here
+ * @author Luis Lopez
+ * @author A.J. Trimble
  */
 public class HComp implements AsciiBlock {
   // +--------+------------------------------------------------------------
@@ -163,6 +164,7 @@ public class HComp implements AsciiBlock {
    *         false otherwise.
    */
   public boolean eqv(HComp other) {
-    return (this.align == other.align);
+    return (this.align == other.align) && (this.blocks.length == other.blocks.length) && this.blocks[].eqv(other.blocks[]);
+
   } // eqv(AsciiBlock)
 } // class HComp

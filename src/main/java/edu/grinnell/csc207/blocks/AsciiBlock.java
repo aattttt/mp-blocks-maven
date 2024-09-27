@@ -6,7 +6,8 @@ import java.io.PrintWriter;
  * Blocks of ASCII text.
  *
  * @author Samuel A. Rebelsky
- * @author Your Name Here
+ * @author Luis Lopez
+ * @author A.J. Trimble
  */
 public interface AsciiBlock {
   // +----------------+----------------------------------------------
@@ -60,7 +61,7 @@ public interface AsciiBlock {
    * @return true if they are structurally equivalent and false otherwise.
    */
   public static boolean eqv(AsciiBlock block1, AsciiBlock block2) {
-    return true;      // STUB
+    return block1.eqv(block2);
   } // eqv(AsciiBlock, AsciiBlock)
 
   /**
