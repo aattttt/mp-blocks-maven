@@ -1,19 +1,14 @@
 package edu.grinnell.csc207.main;
 
 import edu.grinnell.csc207.blocks.AsciiBlock;
-import edu.grinnell.csc207.blocks.Boxed;
-import edu.grinnell.csc207.blocks.HFlip;
-import edu.grinnell.csc207.blocks.Line;
-import edu.grinnell.csc207.blocks.Rect;
-
-import java.io.PrintWriter;
 
 /**
- * Create and print our custom block
+ * Create and print our custom block.
+ *
  * @author A.J. Trimble
  * @author Luis Lopez
  */
-public class OurBlock implements AsciiBlock{
+public class OurBlock implements AsciiBlock {
   // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+
@@ -23,7 +18,6 @@ public class OurBlock implements AsciiBlock{
    */
   AsciiBlock block;
 
-
   // +--------------+------------------------------------------------------
   // | Constructors |
   // +--------------+
@@ -32,17 +26,16 @@ public class OurBlock implements AsciiBlock{
    * Build a new block with the specified contents.
    *
    * @param original
-   *   The original block.
+   *                 The original block.
    */
   public OurBlock(AsciiBlock original) {
     this.block = original;
   } // VFlip(AsciiBlock)
 
-  
   // +---------+-----------------------------------------------------------
   // | Methods |
   // +---------+
-    
+
   /**
    * Get one row from the block.
    *
@@ -51,17 +44,16 @@ public class OurBlock implements AsciiBlock{
    * @return row i.
    *
    * @exception Exception
-   *   if i is outside the range of valid rows.
+   *                      if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
-    if (i < 0 || i  > block.height() + 1) {
-        throw new Exception("Invalid value of i");  
-       } else { 
-        return "{]A.J.~|" + block.row(i) + "|~Luis[}";
-       }
-  }
+    if (i < 0 || i > block.height() + 1) {
+      throw new Exception("Invalid value of i");
+    } else {
+      return "{]A.J.~|" + block.row(i) + "|~Luis[}";
+    } // if within acceptable i, return string
+  } // row(int)
 
-  
   /**
    * Determine how many rows are in the block.
    *
@@ -80,6 +72,15 @@ public class OurBlock implements AsciiBlock{
     return block.width() + "{]A.J.~|".length() + "|~Luis[}".length();
   } // width()
 
+  /**
+   * Determine if another block is structurally equivalent to this block.
+   *
+   * @param other
+   *              The block to compare to this block.
+   *
+   * @return true if the two blocks are structurally equivalent and
+   *         false otherwise.
+   */
   public boolean eqv(AsciiBlock other) {
     return ((other instanceof OurBlock) && (this.eqv((OurBlock) other)));
   } // eqv(AsciiBlock)
@@ -95,5 +96,5 @@ public class OurBlock implements AsciiBlock{
    */
   public boolean eqv(OurBlock other) {
     return (this.block == other.block);
-  }  // eqv(AsciiBlock)
+  } // eqv(AsciiBlock)
 } // class OurBlocks

@@ -11,4 +11,3 @@ public enum VAlignment {
   /** Align to the bottom. */
   BOTTOM
 } // enum VAlignment
-

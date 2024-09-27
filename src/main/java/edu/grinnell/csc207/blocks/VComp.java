@@ -32,25 +32,25 @@ public class VComp implements AsciiBlock {
    * Build a vertical composition of two blocks.
    *
    * @param alignment
-   *   The way in which the blocks should be aligned.
+   *                    The way in which the blocks should be aligned.
    * @param topBlock
-   *   The block on the top.
+   *                    The block on the top.
    * @param bottomBlock
-   *   The block on the bottom.
+   *                    The block on the bottom.
    */
   public VComp(HAlignment alignment, AsciiBlock topBlock,
       AsciiBlock bottomBlock) {
     this.align = alignment;
-    this.blocks = new AsciiBlock[] {topBlock, bottomBlock};
+    this.blocks = new AsciiBlock[] { topBlock, bottomBlock };
   } // VComp(HAlignment, AsciiBlock, AsciiBlock)
 
   /**
    * Build a vertical composition of multiple blocks.
    *
    * @param alignment
-   *   The alignment of the blocks.
+   *                        The alignment of the blocks.
    * @param blocksToCompose
-   *   The blocks we will be composing.
+   *                        The blocks we will be composing.
    */
   public VComp(HAlignment alignment, AsciiBlock[] blocksToCompose) {
     this.align = alignment;
@@ -69,63 +69,68 @@ public class VComp implements AsciiBlock {
    * @return row i.
    *
    * @exception Exception
-   *   if i is outside the range of valid rows.
+   *                      if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
     if (align.equals(HAlignment.LEFT)) {
       int blockIndex = 0;
       int sumHeight = 0;
-      while (i > sumHeight){
+      while (i > sumHeight) {
         sumHeight += blocks[blockIndex].height();
-        blockIndex ++;
+        blockIndex++;
       } // end while
-      if (i - sumHeight == 0){
-        return blocks[blockIndex].row(i - (sumHeight)) + " ".repeat(width() - blocks[blockIndex].width());
+      if (i - sumHeight == 0) {
+        return blocks[blockIndex].row(i - (sumHeight))
+            + " ".repeat(width() - blocks[blockIndex].width());
       } else {
-        return blocks[blockIndex -1].row((sumHeight) - i) + " ".repeat(width() - blocks[blockIndex -1].width());
+        return blocks[blockIndex - 1].row((sumHeight) - i)
+            + " ".repeat(width() - blocks[blockIndex - 1].width());
       } // end if else
 
-    
     } else if (align.equals(HAlignment.RIGHT)) {
       int blockIndex = 0;
       int sumHeight = 0;
-      while (i > sumHeight){
+      while (i > sumHeight) {
         if (blocks[blockIndex].width() == 0) {
-          blockIndex ++;
+          blockIndex++;
         } else {
           sumHeight += blocks[blockIndex].height();
-          blockIndex ++;
-        }
+          blockIndex++;
+        } // updates index to proper block in array
       } // end while
-      if (i - sumHeight == 0){
+      if (i - sumHeight == 0) {
         if (blocks[blockIndex].width() == 0) {
           return "";
         }
-        return " ".repeat(width() - blocks[blockIndex].width()) + blocks[blockIndex].row(i - (sumHeight));
+        return " ".repeat(width() - blocks[blockIndex].width())
+            + blocks[blockIndex].row(i - (sumHeight));
       } else {
-        if (blocks[blockIndex -1].width() == 0) {
+        if (blocks[blockIndex - 1].width() == 0) {
           return "";
-        }
-        return " ".repeat(width() - blocks[blockIndex -1].width()) + blocks[blockIndex -1].row((sumHeight) - i);
+        } // returns string with spaces to fill out entire block width
+        return " ".repeat(width() - blocks[blockIndex - 1].width())
+            + blocks[blockIndex - 1].row((sumHeight) - i);
       } // end if else
 
     } else if (align.equals(HAlignment.CENTER)) {
       int blockIndex = 0;
       int sumHeight = 0;
-      while (i > sumHeight){
+      while (i > sumHeight) {
         sumHeight += blocks[blockIndex].height();
-        blockIndex ++;
+        blockIndex++;
       } // end while
-      if (i - sumHeight == 0){
+      if (i - sumHeight == 0) {
         int diff = (width() - blocks[blockIndex].width()) / 2;
-        return " ".repeat(diff) + blocks[blockIndex].row(i - (sumHeight)) + " ".repeat(width() - diff - blocks[blockIndex].width());
+        return " ".repeat(diff) + blocks[blockIndex].row(i - (sumHeight))
+            + " ".repeat(width() - diff - blocks[blockIndex].width());
       } else {
         int diff = (width() - blocks[blockIndex - 1].width()) / 2;
-        return " ".repeat(diff) + blocks[blockIndex -1].row((sumHeight) - i) + " ".repeat(width() - diff - blocks[blockIndex - 1].width());
-      }
+        return " ".repeat(diff) + blocks[blockIndex - 1].row((sumHeight) - i)
+            + " ".repeat(width() - diff - blocks[blockIndex - 1].width());
+      } // checks if within block heigh to return string with spaces on right side
     } // end VA checks
 
-    return "";  // STUB
+    return "";
   } // row(int)
 
   /**
@@ -137,7 +142,7 @@ public class VComp implements AsciiBlock {
     int sum = 0;
     for (int i = 0; i < blocks.length; i++) {
       sum += blocks[i].height();
-    }
+    } // loop through blocks array
     return sum;
   } // height()
 
@@ -151,8 +156,8 @@ public class VComp implements AsciiBlock {
     for (int i = 0; i < blocks.length; i++) {
       if (max < blocks[i].width()) {
         max = blocks[i].width();
-      }
-    }
+      } // if width is bigger, update max to current width
+    } // for to iterate thorugh blocks
     return max;
   } // width()
 
@@ -160,12 +165,12 @@ public class VComp implements AsciiBlock {
    * Determine if another block is structurally equivalent to this block.
    *
    * @param other
-   *   The block to compare to this block.
+   *              The block to compare to this block.
    *
    * @return true if the two blocks are structurally equivalent and
-   *    false otherwise.
+   *         false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return false; // STUB
   } // eqv(AsciiBlock)
 } // class VComp

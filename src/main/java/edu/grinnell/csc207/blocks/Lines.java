@@ -32,7 +32,7 @@ public class Lines implements AsciiBlock {
    * Build a new block.
    *
    * @param contents
-   *   The contents of the block.
+   *                 The contents of the block.
    */
   public Lines(String[] contents) {
     this.lines = Arrays.copyOf(contents, contents.length);
@@ -47,8 +47,7 @@ public class Lines implements AsciiBlock {
 
     // Update the lines to make them the same width.
     for (int i = 0; i < lines.length; i++) {
-      this.lines[i] =
-          this.lines[i] + " ".repeat(this.width - this.lines[i].length());
+      this.lines[i] = this.lines[i] + " ".repeat(this.width - this.lines[i].length());
     } // for
   } // Lines(String[])
 
@@ -56,7 +55,7 @@ public class Lines implements AsciiBlock {
    * Build a new block from a single line, splitting at newlines.
    *
    * @param contents
-   *   The contents of the block.
+   *                 The contents of the block.
    */
   public Lines(String contents) {
     this(contents.split("\n"));
@@ -74,7 +73,7 @@ public class Lines implements AsciiBlock {
    * @return row i.
    *
    * @exception Exception
-   *   if i is outside the range of valid rows.
+   *                      if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
     if ((i < 0) || (i >= this.height())) {
@@ -105,12 +104,12 @@ public class Lines implements AsciiBlock {
    * Determine if another block is structurally equivalent to this block.
    *
    * @param other
-   *   The block to compare to this block.
+   *              The block to compare to this block.
    *
    * @return true if the two blocks are structurally equivalent and
-   *    false otherwise.
+   *         false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return false; // STUB
   } // eqv(AsciiBlock)
 } // class Lines

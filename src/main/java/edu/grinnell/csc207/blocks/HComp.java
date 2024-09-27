@@ -144,10 +144,10 @@ public class HComp implements AsciiBlock {
    * Determine if another block is structurally equivalent to this block.
    *
    * @param other
-   *   The block to compare to this block.
+   *              The block to compare to this block.
    *
    * @return true if the two blocks are structurally equivalent and
-   *    false otherwise.
+   *         false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
     return ((other instanceof HComp) && (this.eqv((HComp) other)));
