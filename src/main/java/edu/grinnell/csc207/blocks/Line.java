@@ -83,7 +83,7 @@ public class Line implements AsciiBlock {
   }
 
   public boolean eqv(Line other) {
-    return this.height() == other.height(); // STUB
+    return this.line.equals(other.line);
   } // eqv(AsciiBlock)
 
   // +---------------+-----------------------------------------------
