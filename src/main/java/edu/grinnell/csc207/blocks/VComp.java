@@ -113,21 +113,48 @@ public class VComp implements AsciiBlock {
       } // end if else
 
     } else if (align.equals(HAlignment.CENTER)) {
+
       int blockIndex = 0;
       int sumHeight = 0;
       while (i > sumHeight) {
-        sumHeight += blocks[blockIndex].height();
-        blockIndex++;
+        if (blocks[blockIndex].width() == 0) {
+          blockIndex++;
+        } else {
+          sumHeight += blocks[blockIndex].height();
+          blockIndex++;
+        } // updates index to proper block in array
       } // end while
       if (i - sumHeight == 0) {
+        if (blocks[blockIndex].width() == 0) {
+          blockIndex++;
+        }
         int diff = (width() - blocks[blockIndex].width()) / 2;
-        return " ".repeat(diff) + blocks[blockIndex].row(i - (sumHeight))
-            + " ".repeat(width() - diff - blocks[blockIndex].width());
+        return " ".repeat(diff) + blocks[blockIndex].row(i - (sumHeight)) 
+          + " ".repeat(width() - diff - blocks[blockIndex].width());
       } else {
+        if (blocks[blockIndex - 1].width() == 0) {
+          blockIndex++;
+        } // returns string with spaces to fill out entire block width
         int diff = (width() - blocks[blockIndex - 1].width()) / 2;
-        return " ".repeat(diff) + blocks[blockIndex - 1].row((sumHeight) - i)
-            + " ".repeat(width() - diff - blocks[blockIndex - 1].width());
-      } // checks if within block heigh to return string with spaces on right side
+        return " ".repeat(diff) + blocks[blockIndex - 1].row((sumHeight) - i) 
+          + " ".repeat(width() - diff - blocks[blockIndex - 1].width());
+      } // end if else
+
+      // int blockIndex = 0;
+      // int sumHeight = 0;
+      // while (i > sumHeight) {
+      //   sumHeight += blocks[blockIndex].height();
+      //   blockIndex++;
+      // } // end while
+      // if (i - sumHeight == 0) {
+      //   int diff = (width() - blocks[blockIndex].width()) / 2;
+      //   return " ".repeat(diff) + blocks[blockIndex].row(i - (sumHeight))
+      //       + " ".repeat(width() - diff - blocks[blockIndex].width());
+      // } else {
+      //   int diff = (width() - blocks[blockIndex - 1].width()) / 2;
+      //   return " ".repeat(diff) + blocks[blockIndex - 1].row((sumHeight) - i)
+      //       + " ".repeat(width() - diff - blocks[blockIndex - 1].width());
+      // } // checks if within block heigh to return string with spaces on right side
     } // end VA checks
 
     return "";
