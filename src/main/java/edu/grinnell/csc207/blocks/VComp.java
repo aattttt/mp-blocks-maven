@@ -100,13 +100,13 @@ public class VComp implements AsciiBlock {
       } // end while
       if (i - sumHeight == 0) {
         if (blocks[blockIndex].width() == 0) {
-          return "";
+          blockIndex++;
         }
         return " ".repeat(width() - blocks[blockIndex].width())
             + blocks[blockIndex].row(i - (sumHeight));
       } else {
         if (blocks[blockIndex - 1].width() == 0) {
-          return "";
+          blockIndex++;
         } // returns string with spaces to fill out entire block width
         return " ".repeat(width() - blocks[blockIndex - 1].width())
             + blocks[blockIndex - 1].row((sumHeight) - i);
