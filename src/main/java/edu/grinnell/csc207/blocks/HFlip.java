@@ -4,7 +4,8 @@ package edu.grinnell.csc207.blocks;
  * A horizontally flipped ASCII block.
  *
  * @author Samuel A. Rebelsky
- * @author Your Name Here
+ * @author Luis Lopez
+ * @author A.J. Trimble
  */
 public class HFlip implements AsciiBlock {
   // +--------+------------------------------------------------------------
@@ -74,6 +75,15 @@ public class HFlip implements AsciiBlock {
     return block.width();
   } // width()
 
+  /**
+   * Determine if another block is structurally equivalent to this block.
+   *
+   * @param other
+   *              The block to compare to this block.
+   *
+   * @return true if the two blocks are structurally equivalent and
+   *         false otherwise.
+   */
   public boolean eqv(AsciiBlock other) {
     return ((other instanceof HFlip) && (this.eqv((HFlip) other)));
   } // eqv(AsciiBlock)

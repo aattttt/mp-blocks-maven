@@ -99,7 +99,7 @@ public class Rect implements AsciiBlock {
    */
   public boolean eqv(AsciiBlock other) {
     return ((other instanceof Rect) && (this.eqv((Rect) other)));
-  }
+  } // eqv(AsciiBlock)
   /**
    * Determine if another block is structurally equivalent to this block.
    *

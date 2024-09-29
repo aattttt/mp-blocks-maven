@@ -6,8 +6,8 @@ import java.util.Arrays;
  * The vertical composition of blocks.
  *
  * @author Samuel A. Rebelsky
- * @author Your Name Here
- * @author Your Name Here
+ * @author Luis Lopez
+ * @author A.J. Trimble
  */
 public class VComp implements AsciiBlock {
   // +--------+------------------------------------------------------------
@@ -41,7 +41,7 @@ public class VComp implements AsciiBlock {
   public VComp(HAlignment alignment, AsciiBlock topBlock,
       AsciiBlock bottomBlock) {
     this.align = alignment;
-    this.blocks = new AsciiBlock[] { topBlock, bottomBlock };
+    this.blocks = new AsciiBlock[] {topBlock, bottomBlock };
   } // VComp(HAlignment, AsciiBlock, AsciiBlock)
 
   /**
@@ -101,7 +101,7 @@ public class VComp implements AsciiBlock {
       if (i - sumHeight == 0) {
         if (blocks[blockIndex].width() == 0) {
           blockIndex++;
-        }
+        } // check if block width is 0, if so presume empty and increment
         return " ".repeat(width() - blocks[blockIndex].width())
             + blocks[blockIndex].row(i - (sumHeight));
       } else {
@@ -127,16 +127,16 @@ public class VComp implements AsciiBlock {
       if (i - sumHeight == 0) {
         if (blocks[blockIndex].width() == 0) {
           blockIndex++;
-        }
+        } // check if block width is 0, if so presume empty and increment
         int diff = (width() - blocks[blockIndex].width()) / 2;
-        return " ".repeat(diff) + blocks[blockIndex].row(i - (sumHeight)) 
+        return " ".repeat(diff) + blocks[blockIndex].row(i - (sumHeight))
           + " ".repeat(width() - diff - blocks[blockIndex].width());
       } else {
         if (blocks[blockIndex - 1].width() == 0) {
           blockIndex++;
         } // returns string with spaces to fill out entire block width
         int diff = (width() - blocks[blockIndex - 1].width()) / 2;
-        return " ".repeat(diff) + blocks[blockIndex - 1].row((sumHeight) - i) 
+        return " ".repeat(diff) + blocks[blockIndex - 1].row((sumHeight) - i)
           + " ".repeat(width() - diff - blocks[blockIndex - 1].width());
       } // end if else
 
@@ -215,12 +215,12 @@ public class VComp implements AsciiBlock {
       return false;
     } else if (this.align != other.align) {
       return false;
-    }
+    } // end of eqv check for alignment
     for (int i = 0; i < this.blocks.length; i++) {
       if (!this.blocks[i].eqv(other.blocks[i])) {
         return false;
-      }
-    }
+      } // end of loop for eqv check each block
+    } // end of else to check eqv of contents and fields
     return true;
   } // eqv(AsciiBlock)
 } // class VComp

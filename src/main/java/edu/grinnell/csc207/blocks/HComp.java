@@ -41,7 +41,7 @@ public class HComp implements AsciiBlock {
   public HComp(VAlignment alignment, AsciiBlock leftBlock,
       AsciiBlock rightBlock) {
     this.align = alignment;
-    this.blocks = new AsciiBlock[] { leftBlock, rightBlock };
+    this.blocks = new AsciiBlock[] {leftBlock, rightBlock };
   } // HComp(VAlignment, AsciiBlock, AsciiBlock)
 
   /**
@@ -80,7 +80,7 @@ public class HComp implements AsciiBlock {
           currStr = currStr + " ".repeat(blocks[x].width());
         } else {
           currStr = currStr + blocks[x].row(i);
-        }
+        } // else to print row with spacing of total width minus block's width
 
       } // end of for loop
 
@@ -104,14 +104,14 @@ public class HComp implements AsciiBlock {
           currStr = currStr + " ".repeat(blocks[x].width());
         } else {
           currStr = currStr + blocks[x].row(i - topSpace);
-        }
-      }
+        } // checks if row is less than top space, to print appropriate row of block
+      } // else to print row with spacing of total width minus block's width
     } else {
       String str = "error";
       return str;
-    }
+    } // return error if not within alignment
     return currStr;
-  }
+  } // row (i)
 
   /**
    * Determine how many rows are in the block.
@@ -123,8 +123,8 @@ public class HComp implements AsciiBlock {
     for (int i = 0; i < blocks.length; i++) {
       if (max < blocks[i].height()) {
         max = blocks[i].height();
-      }
-    }
+      } // checks if block's height is greater than max, if so set max to it
+    } // end of array of blocks to find max height
     return max;
   } // height()
 
@@ -137,7 +137,7 @@ public class HComp implements AsciiBlock {
     int sum = 0;
     for (int i = 0; i < blocks.length; i++) {
       sum += blocks[i].width();
-    }
+    } // increaes the width for the entirety of the blocks
     return sum;
   } // width()
 
@@ -168,12 +168,12 @@ public class HComp implements AsciiBlock {
       return false;
     } else if (this.align != other.align) {
       return false;
-    }
+    } // checks if alignments
     for (int i = 0; i < this.blocks.length; i++) {
       if (!this.blocks[i].eqv(other.blocks[i])) {
         return false;
-      }
-    }
+      } // if blocks not eqv, return false
+    } // end of loop if blocks not eqv
     return true;
   } // eqv(AsciiBlock)
 } // class HComp

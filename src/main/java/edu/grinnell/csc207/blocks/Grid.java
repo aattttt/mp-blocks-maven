@@ -65,7 +65,7 @@ public class Grid implements AsciiBlock {
   public String row(int i) throws Exception {
     if (!(i >= 0 && i < this.height())) {
       throw new Exception("Out of Range");
-    }
+    } // throw exception if row reached is higher than heigh of block
     return element.row(i % element.height()).repeat(hreps);
   } // row(int)
 

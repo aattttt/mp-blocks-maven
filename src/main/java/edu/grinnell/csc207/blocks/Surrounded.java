@@ -59,7 +59,7 @@ public class Surrounded implements AsciiBlock {
       return surroundChar.repeat(width());
     } else {
       return surroundChar + contents.row(i - 1) + surroundChar;
-    }
+    } // if row outside height, print row of char, otherwise char and row
   } // row(int)
 
   /**
@@ -91,7 +91,7 @@ public class Surrounded implements AsciiBlock {
    */
   public boolean eqv(AsciiBlock other) {
     return ((other instanceof Surrounded) && (this.eqv((Surrounded) other)));
-  } 
+  } // eqv(Asciiblock)
 
   /**
    * Determine if another block is structurally equivalent to this block.

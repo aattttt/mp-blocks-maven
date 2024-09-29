@@ -125,12 +125,12 @@ public class Lines implements AsciiBlock {
   public boolean eqv(Lines other) {
     if (this.lines.length != other.lines.length) {
       return false;
-    }
+    } // checks if lines are equal in each block, if so, return false
     for (int i = 0; i < this.lines.length; i++) {
       if (!this.lines[i].equals(other.lines[i])) {
         return false;
-      }
-    }
+      } // if line aren't equal, return false
+    } // for loop to check each line of Lines object
     return true;
   } // eqv(AsciiBlock)
 } // class Lines
