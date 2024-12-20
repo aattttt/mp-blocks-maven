@@ -10,8 +10,7 @@ Explorations with the creation, composition, and mutation of blocks of ASCII tex
 
 **Notes for the reader**
 
-PLEASE ADD NOTES FOR SOMEONE NOT FAMILIAR WITH THE PROJECT.
-
+This program lets a user make ASCII art.
 ---
 
 This code may be found at <https://github.com/aattttt/mp-blocks-maven>. The original project can be found at <https://github.com/Grinnell-CSC207/mp-blocks-maven>.
